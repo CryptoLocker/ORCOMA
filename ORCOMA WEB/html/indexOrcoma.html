@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORCOMA S.A.S</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gray-100">
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <button class="p-2 rounded-full hover:bg-gray-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                <h1 class="text-xl font-bold text-orange-600">ORCOMA S.A.S</h1>
+            </div>
+            <div class="flex-1 max-w-xl mx-4">
+                <form class="relative">
+                    <input type="search" placeholder="Buscar videos de construcción..." class="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:border-orange-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-2.5 h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </form>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center">
+                <span class="text-gray-600 font-semibold">UN</span>
+            </div>
+        </div>
+    </header>
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="relative pb-[56.25%]">
+                    <img src="/placeholder.svg?height=200&width=360&text=Video+1" alt="Técnicas avanzadas de albañilería" class="absolute h-full w-full object-cover">
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-1 line-clamp-2">Técnicas avanzadas de albañilería</h3>
+                    <p class="text-sm text-gray-600">MasterBuilder</p>
+                    <div class="flex items-center text-xs text-gray-500 mt-1">
+                        <span>15K visualizaciones</span>
+                        <span class="mx-1">•</span>
+                        <span>hace 2 días</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Repite este bloque para los demás videos, cambiando el contenido según sea necesario -->
+        </div>
+    </main>
+</body>
+</html>
