@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario de Video - ORCOMA S.A.S</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="max-w-2xl mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-6">Cuestionario: Técnicas de Construcción Avanzadas</h2>
+        <form>
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">1. ¿Cuál es el principal tema del video?</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center space-x-2">
+                            <input type="radio" id="q1-a" name="q1" value="A" class="w-4 h-4">
+                            <label for="q1-a">A. Técnicas de construcción</label>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <input type="radio" id="q1-b" name="q1" value="B" class="w-4 h-4">
+                            <label for="q1-b">B. Seguridad en el trabajo</label>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <input type="radio" id="q1-c" name="q1" value="C" class="w-4 h-4">
+                            <label for="q1-c">C. Materiales de construcción</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">2. ¿Qué herramienta se mencionó más en el video?</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center space-x-2">
+                            <input type="radio" id="q2-a" name="q2" value="A" class="w-4 h-4">
+                            <label for="q2-a">A. Martillo</label>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <input type="radio" id="q2-b" name="q2" value="B" class="w-4 h-4">
+                            <label for="q2-b">B. Sierra eléctrica</label>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <input type="radio" id="q2-c" name="q2" value="C" class="w-4 h-4">
+                            <label for="q2-c">C. Taladro</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">3. ¿Cuál fue el consejo más importante dado en el video?</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center space-x-2">
+                            <input type="radio" id="q3-a" name="q3" value="A" class="w-4 h-4">
+                            <label for="q3-a">A. Siempre usar equipo de protección</label>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <input type="radio" id="q3-b" name="q3" value="B" class="w-4 h-4">
+                            <label for="q3-b">B. Planificar antes de construir</label>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <input type="radio" id="q3-c" name="q3" value="C" class="w-4 h-4">
+                            <label for="q3-c">C. Mantener el área de trabajo limpia</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Pregunta abierta: ¿Cómo aplicarías lo aprendido en tu trabajo?</h3>
+                    <textarea 
+                        placeholder="Escribe tu respuesta aquí..." 
+                        class="w-full h-32 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    ></textarea>
+                </div>
+
+                <button 
+                    type="submit" 
+                    class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                >
+                    Enviar respuestas
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
