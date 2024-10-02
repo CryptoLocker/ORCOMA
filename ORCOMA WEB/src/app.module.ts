@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
+import { CommonModule } from './common/common.module';
 
 @Module({
   imports: [
-    UserModule,
     
     ConfigModule.forRoot(),
 
@@ -18,7 +18,11 @@ import { UserModule } from './user/user.module';
       password: process.env.DB_PASSWORD,
       autoLoadEntities: true,
       synchronize: true
-    })
+    }),
+
+    UserModule,
+    
+    CommonModule
   ]
 })
 export class AppModule {}
