@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEMAS DE LA INDUCCIÓN Y REINDUCCIÓN</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #ff6600;
+            padding-bottom: 10px;
+        }
+        .header h1 {
+            color: #ff6600;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"], input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .radio-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .btn-submit {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 20px auto 0;
+        }
+        .signature-section {
+            margin-top: 30px;
+        }
+        .signature-box {
+            border-top: 1px solid #000;
+            margin-top: 50px;
+            padding-top: 10px;
+            text-align: center;
+            width: 300px;
+            display: inline-block;
+        }
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>GESTIÓN DE CALIDAD Y SST</h1>
+            <p>TEMAS DE LA INDUCCIÓN Y REINDUCCIÓN</p>
+            <p>CÓDIGO: GCSST-REG-058 | VERSIÓN: 1 | FECHA: 08/08/2023</p>
+        </div>
+
+        <form id="inductionForm">
+            <div class="form-group">
+                <label for="name">NOMBRES Y APELLIDOS:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="empresa">EMPRESA:</label>
+                <input type="text" id="empresa" name="empresa" required>
+            </div>
+
+            <div class="form-group">
+                <label for="fecha">FECHA:</label>
+                <input type="date" id="fecha" name="fecha" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cargo">CARGO:</label>
+                <input type="text" id="cargo" name="cargo" required>
+            </div>
+
+            <div class="form-group">
+                <label>TIPO:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="tipo" value="induccion"> INDUCCIÓN</label>
+                    <label><input type="radio" name="tipo" value="reinduccion"> REINDUCCIÓN</label>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>TEMAS DE LA INDUCCIÓN Y REINDUCCIÓN</th>
+                        <th>SI</th>
+                        <th>NO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Presentación de la empresa.</td>
+                        <td><input type="radio" name="tema1" value="si"></td>
+                        <td><input type="radio" name="tema1" value="no"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Reseña histórica de la empresa</td>
+                        <td><input type="radio" name="tema2" value="si"></td>
+                        <td><input type="radio" name="tema2" value="no"></td>
+                    </tr>
+                
+                    </tr>
+                        <td>3</td>
+                        <td>Misión y visión de la Organización
+                        </td>
+                        <td><input type="radio" name="tema2" value="si"></td>
+                        <td><input type="radio" name="tema2" value="no"></td>
+
+                    
+                    </tr>
+                    <td>4</td>
+                    <td>Aspectos Generales SG-SST
+                        
+                    </td>
+                    <td><input type="radio" name="tema2" value="si"></td>
+                    <td><input type="radio" name="tema2" value="no"></td>    
+
+                </tr>
+                <td>5</td>
+                <td>Que es el SG-SST
+                </td>
+                <td><input type="radio" name="tema2" value="si"></td>
+                <td><input type="radio" name="tema2" value="no"></td>    
+
+            </tr>
+            <td>6</td>
+            <td> Desarrollo del SG-SST
+            </td>
+            <td><input type="radio" name="tema2" value="si"></td>
+            <td><input type="radio" name="tema2" value="no"></td>    
+
+        </tr>
+        <td>7</td>
+        <td>Aspectos Legales del Sistema de gestión de Seguridad y Salud en el Trabajo
+        </td>
+        <td><input type="radio" name="tema2" value="si"></td>
+        <td><input type="radio" name="tema2" value="no"></td>    
+
+
+    </tr>
+    <td>8</td>
+    <td>Política de Seguridad y Salud en el Trabajo (Se hace entrega en Físico)
+    </td>
+    <td><input type="radio" name="tema2" value="si"></td>
+    <td><input type="radio" name="tema2" value="no"></td>    
+
+
+
+</tr>
+<td>9</td>
+<td>Objetivos y metas de la políticas de la seguridad y salud en el trabajo
+</td>
+<td><input type="radio" name="tema2" value="si"></td>
+<td><input type="radio" name="tema2" value="no"></td>    
+
+
+
+</tr>
+<td>10</td>
+<td>Política de prevención del Abuso de Alcohol, Drogas No uso de Sustancias Psicoactivas y
+    Espacios libres de Humo de Tabaco (se hace entrega en físico)    
+</td>
+<td><input type="radio" name="tema2" value="si"></td>
+<td><input type="radio" name="tema2" value="no"></td>    
+<tr>
+    <td>11</td>
+    <td>Procedimiento, mecanismos y medios para presentar quejas por la vulneración del derecho a
+        nombre propio o anónimo, tramite de la queja y debido cuidado con la participación directa de 
+        los miembros del comité de convivencia    
+    </td>
+    <td><input type="radio" name="tema11" value="si"></td>
+    <td><input type="radio" name="tema11" value="no"></td>  
+</tr>
+
+<tr>
+    <td>12</td>
+    <td>Reglamento de higiene y seguridad industrial normativa resolución 2400 del año 1989</td>
+    <td><input type="radio" name="tema12" value="si"></td>
+    <td><input type="radio" name="tema12" value="no"></td>  
+</tr>
+
+<tr></tr>
+    <td>13</td>
+    <td>
+        Nivel de riesgo al que está expuesto el trabajador en su lugar de trabajo o ejerciendo sus funciones
+        
+        <div style="margin-top: 10px;">
+            <p><small>Nivel de riesgo:</small></p>
+            <select name="nivel_riesgo13">
+                <option value="">Seleccione un nivel</option>
+                <option value="1">Nivel 1</option>
+                <option value="2">Nivel 2</option>
+                <option value="3">Nivel 3</option>
+                <option value="4">Nivel 4</option>
+                <option value="5">Nivel 5</option>
+            </select>
+            <td><input type="radio" name="tema13" value="si"></td>
+            <td><input type="radio" name="tema13" value="no"></td>
+        </div>
+    </td>
+</tr>
+    
+     
+</tr>
+
+<tr>
+    <td>14</td>
+    <td>Clasificación de los riesgos: Riesgo Biomecánica, mecánico, publico, físico, químico, psicosocial, biológico, condiciones de seguridad</td>
+    <td><input type="radio" name="tema14" value="si"></td>
+    <td><input type="radio" name="tema14" value="no"></td>  
+</tr>
+
+<tr>
+    <td>15</td>
+    <td>Elementos de protección personal y sus principales objetivos</td>
+    <td><input type="radio" name="tema15" value="si"></td>
+    <td><input type="radio" name="tema15" value="no"></td>  
+</tr>
+
+<tr>
+    <td>16</td>
+    <td>Instrucciones para el uso y mantenimiento de EPP</td>
+    <td><input type="radio" name="tema16" value="si"></td>
+    <td><input type="radio" name="tema16" value="no"></td>  
+</tr>
+
+<tr>
+    <td>17</td>
+    <td>Funcionamiento del comité paritario de seguridad y salud en el trabajo</td>
+    <td><input type="radio" name="tema17" value="si"></td>
+    <td><input type="radio" name="tema17" value="no"></td>  
+</tr>
+
+<tr>
+    <td>18</td>
+    <td>Principales funciones del COPASST</td>
+    <td><input type="radio" name="tema18" value="si"></td>
+    <td><input type="radio" name="tema18" value="no"></td>  
+</tr>
+
+<tr>
+    <td>19</td>
+    <td>Comité de convivencia laboral</td>
+    <td><input type="radio" name="tema19" value="si"></td>
+    <td><input type="radio" name="tema19" value="no"></td>  
+</tr>
+
+<tr>
+    <td>20</td>
+    <td>Principales funciones del comité de convivencia laboral</td>
+    <td><input type="radio" name="tema20" value="si"></td>
+    <td><input type="radio" name="tema20" value="no"></td>  
+</tr>
+
+<tr>
+    <td>21</td>
+    <td>Plan de emergencia y clases de emergencias</td>
+    <td><input type="radio" name="tema21" value="si"></td>
+    <td><input type="radio" name="tema21" value="no"></td>  
+</tr>
+
+<tr>
+    <td>22</td>
+    <td>Qué hacer en caso de una emergencia</td>
+    <td><input type="radio" name="tema22" value="si"></td>
+    <td><input type="radio" name="tema22" value="no"></td>  
+</tr>
+
+<tr>
+    <td>23</td>
+    <td>Conceptos básicos: ARL, EPS, AFP, enfermedad laboral, peligro, riesgo, incidente, accidente 
+        de trabajo, acto inseguro, condiciones inseguras, condiciones de salud desfavorable</td>
+    <td><input type="radio" name="tema23" value="si"></td>
+    <td><input type="radio" name="tema23" value="no"></td>  
+</tr>
+
+<tr>
+    <td>24</td>
+    <td>Auto reporte de condiciones de trabajo y salud</td>
+    <td><input type="radio" name="tema24" value="si"></td>
+    <td><input type="radio" name="tema24" value="no"></td>  
+</tr>
+<tr>
+    <td>25</td>
+    <td>Responsabilidades del trabajador frente al SG-SST</td>
+    <td><input type="radio" name="tema25" value="si"></td>
+    <td><input type="radio" name="tema25" value="no"></td>  
+</tr>
+
+<tr>
+    <td>26</td>
+    <td>Normas de seguridad generales en SST</td>
+    <td><input type="radio" name="tema26" value="si"></td>
+    <td><input type="radio" name="tema26" value="no"></td>  
+</tr>
+
+<tr>
+    <td>27</td>
+    <td>Protocolo de levantamiento manual de cargas</td>
+    <td><input type="radio" name="tema27" value="si"></td>
+    <td><input type="radio" name="tema27" value="no"></td>  
+</tr>
+
+<tr>
+    <td>28</td>
+    <td>Uso adecuado de herramientas manuales</td>
+    <td><input type="radio" name="tema28" value="si"></td>
+    <td><input type="radio" name="tema28" value="no"></td>  
+</tr>
+
+<tr>
+    <td>29</td>
+    <td>Clasificación de los riesgos: Riesgo Biomecánico, mecánico, público, físico, químico, psicosocial, biológico, condiciones de seguridad</td>
+    <td><input type="radio" name="tema29" value="si"></td>
+    <td><input type="radio" name="tema29" value="no"></td>  
+</tr>
+
+<tr>
+    <td>30</td>
+    <td>Elementos de protección personal y sus principales objetivos</td>
+    <td><input type="radio" name="tema30" value="si"></td>
+    <td><input type="radio" name="tema30" value="no"></td>  
+</tr>
+
+<tr>
+    <td>31</td>
+    <td>Instrucciones para el uso y mantenimiento de EPP</td>
+    <td><input type="radio" name="tema31" value="si"></td>
+    <td><input type="radio" name="tema31" value="no"></td>  
+</tr>
+
+<tr>
+    <td>32</td>
+    <td>Funcionamiento del comité paritario de seguridad y salud en el trabajo</td>
+    <td><input type="radio" name="tema32" value="si"></td>
+    <td><input type="radio" name="tema32" value="no"></td>  
+</tr>
+
+<tr>
+    <td>33</td>
+    <td>Principales funciones del COPASST</td>
+    <td><input type="radio" name="tema33" value="si"></td>
+    <td><input type="radio" name="tema33" value="no"></td>  
+</tr>
+
+<tr>
+    <td>34</td>
+    <td>Comité de convivencia laboral</td>
+    <td><input type="radio" name="tema34" value="si"></td>
+    <td><input type="radio" name="tema34" value="no"></td>  
+</tr>
+
+
+
+
+                </tbody>
+            </table>
+
+            <div class="form-group">
+                <label for="anotacion">ANOTACIÓN DEL TRABAJADOR:</label>
+                <textarea id="anotacion" name="anotacion" rows="4"></textarea>
+            </div>
+
+            <p><strong>NOTA:</strong> Por motivos de ley es obligatorio que usted tenga la información clara y veraz de cada tema antes dicho. Se compromete usted como trabajador, a cumplir cada uno de estos ítems.</p>
+
+
+            <button type="submit" class="btn-submit">Enviar Formulario</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('inductionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Formulario enviado correctamente');
+        });
+    </script>
+</body>
+</html> 
+|
