@@ -10,6 +10,13 @@ import { AuthModule } from './auth/auth.module';
     ConfigModule.forRoot(),
 
     TypeOrmModule.forRoot({
+      ssl: process.env.STATE === 'prod',
+      extra: { 
+        ssl: process.env.STATE === 'prod'
+        ? {rejectUnauthorized: false}
+        : null,
+      },
+
       type: 'postgres',
       host: process.env.DB_HOST,
       port: +process.env.DB_PORT,
