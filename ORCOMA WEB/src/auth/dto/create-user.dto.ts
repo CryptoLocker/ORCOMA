@@ -9,9 +9,10 @@ export class CreateUserDto {
     @IsString()
     @MinLength(8)
     @MaxLength(50)
+    //RegEx to check if the password is valid
     @Matches(
         /(?:(?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
-        message: 'The password must have a Uppercase, lowercase letter and a number'
+        message: 'The password must have an Uppercase, a lowercase letter and a number'
     })
     password: string
 

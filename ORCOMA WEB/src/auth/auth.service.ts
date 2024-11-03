@@ -8,6 +8,7 @@ import { User } from './entities/user.entity';
 import { CreateUserDto, LoginUserDto } from './dto';
 import { JwtPayload } from './interfaces/jwt-payload.interfaces';
 import { JwtService } from '@nestjs/jwt';
+import { PaginationDto } from 'src/common/dtos/pagination.dto';
 
 @Injectable()
 export class AuthService {
@@ -61,6 +62,18 @@ export class AuthService {
         ...user, 
         token: this.getJwtToken({id: user.id})
       }
+  }
+
+  async findAll(paginationDto: PaginationDto) {
+
+    const { limit = undefined, offset = 0 } = paginationDto;
+
+    const feedbacks = await this.userRepository.find({
+      take: limit,
+      skip: offset
+    })
+
+    return feedbacks
   }
 
   private getJwtToken( payload: JwtPayload){

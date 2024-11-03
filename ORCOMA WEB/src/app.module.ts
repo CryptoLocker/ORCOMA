@@ -3,6 +3,11 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CommonModule } from './common/common.module';
 import { AuthModule } from './auth/auth.module';
+import { FormsModule } from './forms/forms.module';
+import { AnswersModule } from './answers/answers.module';
+import { SeedModule } from './seed/seed.module';
+import { FeedbackModule } from './feedback/feedback.module';
+import { ReportsModule } from './reports/reports.module';
 
 @Module({
   imports: [
@@ -29,7 +34,17 @@ import { AuthModule } from './auth/auth.module';
     
     CommonModule,
     
-    AuthModule
+    AuthModule,
+    
+    FormsModule,
+    
+    AnswersModule,
+    
+    SeedModule,
+    
+    FeedbackModule,
+    
+    ReportsModule
   ]
 })
 export class AppModule {}
