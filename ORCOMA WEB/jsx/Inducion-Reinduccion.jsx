@@ -57,24 +57,23 @@ export default function InductionReinductionForm() {
     anotacion: ''
   })
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData(prevData => ({ ...prevData, [name]: value }))
-  }
+}
 
-  const handleTopicChange = (index: number, value: string) => {
+const handleTopicChange = (index, value) => {
     setFormData(prevData => {
       const newTopics = [...prevData.topics]
       newTopics[index] = value
       return { ...prevData, topics: newTopics }
     })
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log('Formulario enviado:', formData)
-    alert('Formulario enviado correctamente')
-  }
+}
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault()
+  console.log('Formulario enviado:', formData)
+  // Aquí se implementaría la lógica para enviar los datos al servidor
+}
 
   return (
     <div className="container mx-auto p-4">
