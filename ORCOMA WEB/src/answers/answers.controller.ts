@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe, Query, UseGuards } from '@nestjs/common';
 import { AnswersService } from './answers.service';
 import { CreateAnswerDto } from './dto/create-answer.dto';
 import { Auth, GetUser } from 'src/auth/decorators';
@@ -6,11 +6,11 @@ import { User } from 'src/auth/entities/user.entity';
 import { ParseDatePipe } from 'src/common/pipes/parse-date.pipe';
 
 @Controller('answers')
+@Auth()
 export class AnswersController {
   constructor(private readonly answersService: AnswersService) {}
 
   @Post(':id')
-  @Auth()
   create(
     @Param('id', ParseUUIDPipe) questionId: string,
     @Body() createAnswerDto: CreateAnswerDto,

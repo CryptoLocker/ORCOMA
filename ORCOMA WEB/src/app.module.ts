@@ -8,6 +8,7 @@ import { AnswersModule } from './answers/answers.module';
 import { SeedModule } from './seed/seed.module';
 import { FeedbackModule } from './feedback/feedback.module';
 import { ReportsModule } from './reports/reports.module';
+import { FilesModule } from './files/files.module';
 
 @Module({
   imports: [
@@ -44,7 +45,9 @@ import { ReportsModule } from './reports/reports.module';
     
     FeedbackModule,
     
-    ReportsModule
+    ReportsModule,
+    
+    FilesModule
   ]
 })
 export class AppModule {}

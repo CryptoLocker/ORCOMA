@@ -8,6 +8,7 @@ import { User } from 'src/auth/entities/user.entity';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
 
 @Controller('forms')
+@Auth()
 export class FormsController {
   constructor(private readonly formsService: FormsService) {}
 

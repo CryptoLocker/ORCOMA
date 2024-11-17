@@ -1,7 +1,7 @@
-import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { FormStatus } from "../interfaces/form-status";
 import { FormQuestion } from "./form-question.entity";
-import { User } from "src/auth/entities/user.entity";
+import { FormVideo } from "./form-video.entity";
 
 
 
@@ -44,4 +44,15 @@ export class Form {
         }
     )
     questions: FormQuestion[]
+
+    @OneToOne(
+        () => FormVideo, 
+        (formVideo) => formVideo.form, 
+        { 
+            cascade: true, 
+            nullable: true 
+        }
+    )
+    @JoinColumn()
+    video?: FormVideo
 }

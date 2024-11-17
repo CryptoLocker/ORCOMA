@@ -1,17 +1,18 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe, Query, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe, Query, ParseIntPipe, UseGuards } from '@nestjs/common';
 import { FeedbackService } from './feedback.service';
 import { CreateFeedbackDto } from './dto/create-feedback.dto';
 import { UpdateFeedbackDto } from './dto/update-feedback.dto';
 import { Auth, GetUser } from 'src/auth/decorators';
 import { User } from 'src/auth/entities/user.entity';
 import { ParseDatePipe } from 'src/common/pipes/parse-date.pipe';
+import { UserRoleGuard } from 'src/auth/guards/user-role.guard';
 
 @Controller('feedback')
+@Auth()
 export class FeedbackController {
   constructor(private readonly feedbackService: FeedbackService) {}
 
   @Post(':id')
-  @Auth()
   create(
     @Param('id', ParseUUIDPipe) formId,
     @Body() createFeedbackDto: CreateFeedbackDto,

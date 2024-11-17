@@ -25,5 +25,5 @@ export class CreateQuestionDto {
   @IsOptional()
   @ValidateNested({ each: true })
   @Type(() => CreateAnswerDto)
-  questions?: CreateAnswerDto[];
+  answers?: CreateAnswerDto[];
 }

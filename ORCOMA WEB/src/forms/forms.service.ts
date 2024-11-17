@@ -7,6 +7,7 @@ import { User } from 'src/auth/entities/user.entity';
 import { Form, FormQuestion } from './entities';
 import { DataSource, Repository } from 'typeorm';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
+import { FormVideo } from './entities/form-video.entity';
 
 
 @Injectable()
@@ -21,6 +22,9 @@ export class FormsService {
 
     @InjectRepository(FormQuestion)
     private readonly questionRepository: Repository<FormQuestion>,
+
+    @InjectRepository(FormVideo)
+    private readonly videoRepository: Repository<FormVideo>,
 
     private readonly dataSource: DataSource,
   ) { }
@@ -63,7 +67,7 @@ export class FormsService {
     form = await this.formRepository.findOneBy({ id: id });
 
     if (!form)
-      throw new NotFoundException(`form with ${id} not found`);
+      throw new NotFoundException(`Form with ${id} not found`);
 
     return form;
   }
@@ -75,7 +79,7 @@ export class FormsService {
 
     const form = await this.formRepository.preload({ id, ...toUpdate });
 
-    if (!form) throw new NotFoundException(`Product with id: ${id} not found`);
+    if (!form) throw new NotFoundException(`Form with id: ${id} not found`);
 
     // Create query runner
     const queryRunner = this.dataSource.createQueryRunner();
@@ -107,6 +111,46 @@ export class FormsService {
       this.handleDBExceptions(error);
     }
 
+  }
+
+  async updateFormVideo(id: string, videoUrl: string){
+    const form = await this.findOne(id);
+
+    if (!form) throw new NotFoundException(`Form with id: ${id} not found`);
+
+    // Create query runner
+    const queryRunner = this.dataSource.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+
+      if (videoUrl){
+
+        //Remove previous video if existent
+        if(form.video)
+          await queryRunner.manager.delete(FormVideo, { form: { id } });
+
+        form.video = this.videoRepository.create({
+          url: videoUrl, 
+          form: form
+        })
+
+        console.log(form.video)
+      }
+
+      await queryRunner.manager.save(Form, form);
+
+      await queryRunner.commitTransaction();
+      await queryRunner.release();
+
+      return this.findOne(id);
+
+    } catch (error) {
+      await queryRunner.rollbackTransaction();
+      await queryRunner.release();
+      this.handleDBExceptions(error);
+    }
   }
 
   async remove(id: string) {

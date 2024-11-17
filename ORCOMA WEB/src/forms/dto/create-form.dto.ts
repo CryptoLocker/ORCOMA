@@ -22,4 +22,9 @@ export class CreateFormDto {
     @ValidateNested({ each: true })
     @Type(() => CreateQuestionDto)
     questions: CreateQuestionDto[];
+
+    @IsString({ each: true })
+    @IsArray()
+    @IsOptional()
+    images?: string[]
 }
