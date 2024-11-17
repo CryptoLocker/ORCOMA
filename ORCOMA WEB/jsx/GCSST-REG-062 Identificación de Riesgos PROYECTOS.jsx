@@ -27,11 +27,11 @@ export default function FormularioIdentificacionRiesgos() {
     setFormData(prevData => ({ ...prevData, [name]: value }))
 }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log('Formulario enviado:', formData)
-    // Aquí se implementaría la lógica para enviar los datos al servidor
-  }
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault()
+  console.log('Formulario enviado:', formData)
+  // Aquí se implementaría la lógica para enviar los datos al servidor
+}
 
   return (
     <div className="container mx-auto p-4">
