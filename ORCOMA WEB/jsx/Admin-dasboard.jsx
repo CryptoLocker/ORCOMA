@@ -43,9 +43,11 @@ export default function AdminDashboard() {
     { id: 2, title: 'Seguridad en obras de gran altura', views: 2000, completionRate: '78%' },
     { id: 3, title: 'Instalación eficiente de sistemas eléctricos', views: 1200, completionRate: '92%' },
   ])
-
   useEffect(() => {
-    const handleOutsideClick = (event: MouseEvent) => {
+    const handleOutsideClick = (event) => {
+      // Comprobamos que event.target es un Element
+      if (!(event.target instanceof Element)) return;
+      
       if (isMobileMenuOpen && !event.target.closest('.sidebar')) {
         setIsMobileMenuOpen(false)
       }
@@ -55,8 +57,7 @@ export default function AdminDashboard() {
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick)
     }
-  }, [isMobileMenuOpen])
-
+}, [isMobileMenuOpen])
   const handleGenerateReport = async () => {
     if (!reportType || !dateRange.start || !dateRange.end) {
       toast({
