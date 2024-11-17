@@ -22,10 +22,10 @@ export default function FormularioIdentificacionRiesgos() {
     sugerencias: '',
   })
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData(prevData => ({ ...prevData, [name]: value }))
-  }
+}
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
