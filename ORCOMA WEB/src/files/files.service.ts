@@ -1,6 +1,7 @@
 import {Injectable } from '@nestjs/common'
 import { GoogleCloudStorageProvider } from './providers/google-cloud-storage.provider'
 import { FormsService } from '../forms/forms.service';
+import { CreateFormVideoDto } from 'src/forms/dto';
 
 @Injectable()
 export class FilesService {
@@ -9,15 +10,20 @@ export class FilesService {
     private readonly formsService: FormsService
   ) { }
 
-  async uploadFormVideo(formId: string, video: Express.Multer.File): Promise<string> {
+  async getFileSignedUrl(filePath:string){
+    return this.storageProvider.generateSignedUrl(filePath)
+  }
+
+  async uploadFormVideo(formId: string, video: Express.Multer.File, createFormVideoDto: CreateFormVideoDto): Promise<string> {
     const filePath = `forms/${formId}`
 
     //Save the video in the database
-    await this.formsService.updateFormVideo(formId, filePath)
+    await this.formsService.updateFormVideo(formId, filePath, createFormVideoDto)
     
+    //Save in the storage external service
     await this.storageProvider.uploadFile(video, filePath)
 
-    return this.storageProvider.generateSignedUrl(filePath)
+    return this.getFileSignedUrl(filePath)
   }
 
   async uploadGlobalMetrics(file: Express.Multer.File) {

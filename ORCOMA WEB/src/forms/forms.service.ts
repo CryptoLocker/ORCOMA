@@ -8,6 +8,7 @@ import { Form, FormQuestion } from './entities';
 import { DataSource, Repository } from 'typeorm';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
 import { FormVideo } from './entities/form-video.entity';
+import { CreateFormVideoDto } from './dto';
 
 
 @Injectable()
@@ -113,7 +114,7 @@ export class FormsService {
 
   }
 
-  async updateFormVideo(id: string, videoUrl: string){
+  async updateFormVideo(id: string, filePath: string, createFormVideoDto: CreateFormVideoDto) {
     const form = await this.findOne(id);
 
     if (!form) throw new NotFoundException(`Form with id: ${id} not found`);
@@ -125,19 +126,14 @@ export class FormsService {
 
     try {
 
-      if (videoUrl){
+      //Remove previous video if existent
+      await queryRunner.manager.delete(FormVideo, { form: { id } });
 
-        //Remove previous video if existent
-        if(form.video)
-          await queryRunner.manager.delete(FormVideo, { form: { id } });
-
-        form.video = this.videoRepository.create({
-          url: videoUrl, 
-          form: form
-        })
-
-        console.log(form.video)
-      }
+      form.video = this.videoRepository.create({
+        ...createFormVideoDto,
+        path: filePath,
+        form: form
+      })
 
       await queryRunner.manager.save(Form, form);
 
