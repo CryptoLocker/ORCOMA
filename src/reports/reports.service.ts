@@ -69,18 +69,4 @@ export class ReportsService {
         ? (answeredCount / totalQuestions) * 100 
         : 0
     }
-
-    async getUserSatisfaction(paginationDto: PaginationDto) {
-        const feedbacks = await this.feedbackService.findAll(paginationDto)
-        const totalFeedbacks = feedbacks.length
-
-        const averageSatisfaction = totalFeedbacks > 0 
-            ? feedbacks.reduce((acc, fb) => acc + fb.rating, 0) / totalFeedbacks
-            : 0
-
-        return {
-            totalFeedbacks,
-            averageSatisfaction,
-        }
-    }
 }

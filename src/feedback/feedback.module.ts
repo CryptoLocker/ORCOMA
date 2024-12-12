@@ -5,6 +5,7 @@ import { FormsModule } from 'src/forms/forms.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Feedback } from './entities/feedback.entity';
 import { AuthModule } from 'src/auth/auth.module';
+import { AnswersModule } from 'src/answers/answers.module';
 
 @Module({
   controllers: [FeedbackController],
@@ -12,7 +13,7 @@ import { AuthModule } from 'src/auth/auth.module';
   imports: [
     TypeOrmModule.forFeature([Feedback]),
     AuthModule,
-    FormsModule
+    AnswersModule,
   ],
   exports: [
     TypeOrmModule,

@@ -7,6 +7,7 @@ import { Between, Repository } from 'typeorm';
 import { User } from 'src/auth/entities/user.entity';
 import { FormsService } from 'src/forms/forms.service';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
+import { AnswersService } from '../answers/answers.service';
 
 @Injectable()
 export class FeedbackService {
@@ -17,21 +18,25 @@ export class FeedbackService {
     @InjectRepository(Feedback)
     private readonly feedbackRepository: Repository<Feedback>,
 
-    private readonly formsService: FormsService,
+    private readonly answersService: AnswersService,
   ) { }
 
-  async create(createFeedbackDto: CreateFeedbackDto, user: User, formId: string) {
-
+  async create(createFeedbackDto: CreateFeedbackDto, answerId: string) {
     try {
 
-      await this.formsService.findOne(formId)
+      const answer = await this.answersService.findOne(answerId);
 
       const feedback = this.feedbackRepository.create({
         ...createFeedbackDto,
-        userId: user.id,
-        formId
+        answer: { id: answerId }
       });
-      return await this.feedbackRepository.save(feedback);
+
+      await this.feedbackRepository.save(feedback);
+      
+      return this.feedbackRepository.findOne({
+        where: { id: feedback.id },
+        relations: ['answer']
+      });
 
     } catch (error) {
       this.handleDBExceptions(error)
@@ -50,31 +55,12 @@ export class FeedbackService {
     return feedbacks
   }
 
-  async findByFormId(formId: string) {
-    return await this.feedbackRepository.find({ where: { formId } });
-  }
-
-  async findByUserId(userId: string) {
-    return await this.feedbackRepository.find({ where: { userId } });
-  }
-
   async findByDateRange(startDate: Date, endDate: Date) {
     return await this.feedbackRepository.find({
       where: {
         createdAt: Between(startDate, endDate)
       },
     });
-  }
-
-  async findBySatisfaction(rating: number) {
-    return await this.feedbackRepository.find({ where: { rating } });
-  }
-
-  async searchFeedback(query: string) {
-    return await this.feedbackRepository
-      .createQueryBuilder('feedback')
-      .where('feedback.message ILIKE :query', { query: `%${query}%` })
-      .getMany();
   }
 
   async findByStatus(status: string) {

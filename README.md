@@ -12,5 +12,5 @@
 ```
 docker-compose up -d
 ```
-6. Correr en modo desarrollo
+6. Ejecutar en modo desarrollo
 ```npm run start:dev```
