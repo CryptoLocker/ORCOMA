@@ -12,7 +12,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Label } from "@/components/ui/label"
-import {
+import { 
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
@@ -138,13 +138,7 @@ export default function Component() {
 
   const fetchUsers = async () => {
     try {
-      // Llamada al backend para obtener usuarios
-      // const response = await fetch('/api/users');
-      // const data = await response.json();
-      // setUsers(data);
-      // setSelectedUser(data[0]);
-      
-      // Datos de ejemplo (reemplazar con la llamada real al backend)
+   
       const usersData = [
         {
           id: 1,
