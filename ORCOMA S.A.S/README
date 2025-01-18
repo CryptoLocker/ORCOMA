@@ -1,0 +1,59 @@
+
+## Descripción
+Sistema de gestión de videos y comunicación interna para capacitación de personal.
+
+## Prerrequisitos
+- Node.js 18 o superior
+- NPM 8 o superior
+- Cuenta en Supabase
+
+## Instalación
+
+1. Clonar el repositorio
+```bash
+git clone [url-del-repositorio]
+```
+
+2. Instalar dependencias
+```bash
+npm install
+```
+
+3. Configurar variables de entorno
+Crear un archivo `.env` con las siguientes variables:
+```
+NEXT_PUBLIC_SUPABASE_URL=tu_url_de_supabase
+NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_clave_anonima_de_supabase
+```
+
+4. Iniciar el servidor de desarrollo
+```bash
+npm run dev
+```
+
+## Estructura del Proyecto
+![C:\Users\Jhaynner\Downloads\ORCOMA S.A.S\image.png](image.png)
+#### Videos
+- `id`: Identificador único
+- `title`: Título del video
+- `description`: Descripción del contenido
+- `url`: URL del video
+- `views`: Número de visualizaciones
+- `completion_rate`: Tasa de finalización
+
+#### Mensajes
+- `id`: Identificador único
+- `sender_id`: ID del remitente
+- `receiver_id`: ID del destinatario
+- `question`: Pregunta enviada
+- `answer`: Respuesta proporcionada
+
+## Seguridad
+- Autenticación mediante Supabase Auth
+- Row Level Security (RLS) implementado en todas las tablas
+- Políticas de acceso basadas en roles
+
+## Personalización
+Para modificar el tema o estilos:
+1. Editar `tailwind.config.js`
+2. Modificar los estilos en `src/index.css`
