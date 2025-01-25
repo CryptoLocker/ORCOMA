@@ -1,0 +1,16 @@
+INSTALLAR DEPENDENCIAS NECESARIAS
+
+-npm install
+
+DEPENDENCIAS PRIMARIAS QUE DEBERIAN EJECUTARSE AL INICIAR EL NPM 
+Next.js
+React
+Tailwind CSS
+lucide-react
+
+EJECUTAR APP
+npm run dev
+
+DEBERIA ESTAR EN
+
+http://localhost:3000/
