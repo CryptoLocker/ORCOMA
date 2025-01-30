@@ -37,49 +37,4 @@ npm install typescript @types/react @types/react-dom
 npm install @chakra-ui/react @emotion/react @emotion/styled framer-motion
 npm install react-icons
 
-## Estructura del Proyecto
 
-```
-├── src/
-│   ├── components/     # Componentes reutilizables
-│   ├── lib/           # Utilidades y configuraciones
-│   ├── hooks/         # Hooks personalizados
-│   └── types/         # Definiciones de tipos
-├── supabase/
-│   └── migrations/    # Migraciones de la base de datos
-└── public/           # Archivos estáticos
-```
-
-## Base de Datos
-
-### Tablas Principales
-
-#### Videos
-- `id`: Identificador único
-- `title`: Título del video
-- `description`: Descripción del contenido
-- `url`: URL del video
-- `views`: Número de visualizaciones
-- `completion_rate`: Tasa de finalización
-
-#### Mensajes
-- `id`: Identificador único
-- `sender_id`: ID del remitente
-- `receiver_id`: ID del destinatario
-- `question`: Pregunta enviada
-- `answer`: Respuesta proporcionada
-
-## Seguridad
-- Autenticación mediante Supabase Auth
-- Row Level Security (RLS) implementado en todas las tablas
-- Políticas de acceso basadas en roles
-
-## Personalización
-Para modificar el tema o estilos:
-1. Editar `tailwind.config.js`
-2. Modificar los estilos en `src/index.css`
-
-## Soporte
-Para soporte técnico, contactar a:
-- Email: jhaynenrdvargas@gmail.com
-- Teléfono: xxxxxxxx
