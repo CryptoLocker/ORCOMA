@@ -1,3 +1,5 @@
+#Only use if you want a quick database setup for local development
+
 services:
   db:
     image: postgres:14.3

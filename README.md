@@ -1,16 +1,49 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Orcoma API
 
-# OrcomaWeb
+Backend API para el sistema Orcoma, desarrollado con NestJS.
 
-1. Clonar el repositorio
-2. ```npm install```
-3. Clonar el archivo ```.env.template``` y renombrarlo a ```.env```
-4. Ajustar las variables de entorno
-5. Levantar la base de datos
+## Requisitos Previos
+
+- Node.js 20.x
+- PostgreSQL 14.3+ (o Docker para desarrollo local)
+- Credenciales de Google Cloud (para almacenamiento en buckets)
+
+## Configuración Inicial
+
+1. Instalar dependencias:
+```bash
+npm install
 ```
+
+2. Configurar variables de entorno:
+```bash
+cp .env.template .env
+# Editar .env con tus configuraciones
+```
+
+3. Base de datos local (usando Docker):
+```bash
 docker-compose up -d
 ```
-6. Ejecutar en modo desarrollo
-```npm run start:dev```
+
+## Desarrollo
+
+```bash
+# Desarrollo
+npm run start:dev
+
+# Producción
+npm run build
+npm run start:prod
+```
+
+La API estará disponible en `http://localhost:{PORT}/api`
+Documentación Swagger: `http://localhost:{PORT}/api`
+
+## Características Principales
+
+- Autenticación JWT
+- Gestión de formularios y respuestas
+- Almacenamiento de archivos en Google Cloud Storage
+- (TODO)Gestión de reportes
+- Documentación API con Swagger
