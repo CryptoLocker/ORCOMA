@@ -10,8 +10,9 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
 
   //CORS
+  const allowedOrigins = (process.env.STATE === 'dev') ? true : [process.env.FRONTEND_URL];
   app.use(cors({
-    origin: process.env.FRONTEND_URL, 
+    origin: allowedOrigins, 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   }));
