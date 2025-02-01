@@ -1,0 +1,7 @@
+INSTALACIONES NECESARIAS 
+
+npm install next@latest
+
+si ocurre algun error porque el pc lo bloquea ejecutar en powershell
+
+Set-ExecutionPolicy Unrestricted -Scope CurrentUser
