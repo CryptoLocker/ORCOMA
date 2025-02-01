@@ -1,5 +1,5 @@
-// Este archivo contendrá funciones para interactuar con la API de datos de YouTube
-// Será implementado por el equipo de backend
+// Este archivo contiene funciones para interactuar con la API de datos de YouTube
+// Será implementado completamente por el equipo de backend
 
 export async function fetchYouTubeVideos(query = "") {
   // Esta es una función de marcador de posición
@@ -12,7 +12,36 @@ export async function fetchYouTubeVideos(query = "") {
   // Devuelve datos ficticios por ahora
   return {
     items: [
-      // ... datos ficticios de videos que coinciden con la estructura de respuesta de la API de YouTube
+      {
+        id: "video1",
+        snippet: {
+          title: "Resultado de búsqueda 1",
+          channelTitle: "ORCOMA S.A.S",
+          thumbnails: {
+            medium: {
+              url: "/placeholder.svg?height=200&width=360&text=Resultado+1",
+            },
+          },
+        },
+        statistics: {
+          viewCount: "1000",
+        },
+      },
+      {
+        id: "video2",
+        snippet: {
+          title: "Resultado de búsqueda 2",
+          channelTitle: "ORCOMA S.A.S",
+          thumbnails: {
+            medium: {
+              url: "/placeholder.svg?height=200&width=360&text=Resultado+2",
+            },
+          },
+        },
+        statistics: {
+          viewCount: "2000",
+        },
+      },
     ],
   }
 }
