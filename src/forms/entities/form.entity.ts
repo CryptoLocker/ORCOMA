@@ -3,6 +3,7 @@ import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, One
 import { FormStatus } from "../interfaces/form-status";
 import { FormQuestion } from "./form-question.entity";
 import { FormVideo } from "./form-video.entity";
+import { ValidRoles } from 'src/auth/interfaces';
 
 @Entity('forms')
 export class Form {
@@ -63,6 +64,19 @@ export class Form {
         default: FormStatus.active,
     })
     status: FormStatus;
+
+    @ApiPropertyOptional({
+        description: 'User roles to which the form will be available',
+        enum: ValidRoles,
+        isArray: true,
+        example: [ValidRoles.operario, ValidRoles.supervisor]
+    })
+    @Column('enum', {
+        enum: ValidRoles,
+        array: true,
+        default: [ValidRoles.user],
+    })
+    targetRoles: ValidRoles[];
 
     @ApiProperty({
         description: 'List of questions associated with the form',

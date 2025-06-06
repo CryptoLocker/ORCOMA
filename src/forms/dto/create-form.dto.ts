@@ -4,6 +4,7 @@ import { ArrayNotEmpty, IsArray, IsEnum, IsOptional, IsString, MinLength, Valida
 import { FormStatus } from '../interfaces';
 import { CreateQuestionDto } from './create-question.dto';
 import { CreateFormVideoDto } from './create-form-video.dto';
+import { ValidRoles } from 'src/auth/interfaces';
 
 export class CreateFormDto {
   @ApiProperty({
@@ -31,6 +32,17 @@ export class CreateFormDto {
   @IsEnum(FormStatus)
   @IsOptional()
   status?: FormStatus;
+
+  @ApiPropertyOptional({
+    description: 'User roles to which the form will be available',
+    enum: ValidRoles,
+    isArray: true,
+    example: [ValidRoles.operario, ValidRoles.supervisor]
+  })
+  @IsArray()
+  @IsEnum(ValidRoles, { each: true })
+  @IsOptional()
+  targetRoles?: ValidRoles[];
 
   @ApiProperty({
     description: 'List of questions included in the form',

@@ -5,10 +5,11 @@ import { CreateFormDto } from './dto/create-form.dto';
 import { UpdateFormDto } from './dto/update-form.dto';
 import { User } from 'src/auth/entities/user.entity';
 import { Form, FormQuestion } from './entities';
-import { DataSource, Repository } from 'typeorm';
+import { DataSource, In, Repository } from 'typeorm';
 import { PaginationDto } from 'src/common/dtos/pagination.dto';
 import { FormVideo } from './entities/form-video.entity';
 import { CreateFormVideoDto } from './dto';
+import { ValidRoles } from 'src/auth/interfaces';
 
 
 @Injectable()

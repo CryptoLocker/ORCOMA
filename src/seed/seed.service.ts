@@ -1,9 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+
 import { User } from 'src/auth/entities/user.entity';
 import { Form } from 'src/forms/entities';
 import { FormsService } from 'src/forms/forms.service';
-import { Repository } from 'typeorm';
+import { Answer } from 'src/answers/entities/answer.entity';
+
 import { initialData } from './data/seed-data';
 
 @Injectable()
@@ -16,14 +19,17 @@ export class SeedService {
     private readonly userRepository: Repository<User>,
 
     @InjectRepository(Form)
-    private readonly formRepository: Repository<Form>
+    private readonly formRepository: Repository<Form>,
+
+    @InjectRepository(Answer)
+    private readonly answerRepository: Repository<Answer>,
   ) { }
 
   async runSeed() {
     await this.deleteTables();
-    const adminUser = await this.insertUsers();
-    await this.insertForms(adminUser);
-
+    const users = await this.insertUsers();
+    const forms = await this.insertForms(users[0]);
+    await this.insertAnswers(users, forms);
     return 'SEED EXECUTED';
   }
 
@@ -37,51 +43,43 @@ export class SeedService {
       .execute();
   }
 
-  //Returns the first user as it's hardcoded to be an admin
-  //By returning it we allow to insert forms without auth limitations
   private async insertUsers() {
     const seedUsers = initialData.users;
 
-    const users: User[] = seedUsers.map(user => this.userRepository.create(user));
+    const users: User[] = seedUsers.map(
+      user => this.userRepository.create(user)
+    );
 
     const dbUsers = await this.userRepository.save(users);
-    return dbUsers[0];
+    return dbUsers;
   }
 
   private async insertForms(user: User) {
-    await this.formRepository.delete({});
 
-    const forms = initialData.forms;
+    const seedForms = initialData.forms;
 
-    const insertPromises = forms.map((form) => {
+    const insertPromises = seedForms.map(
+      form => this.formsService.create(form, user)
+    );
 
-      const { questions, ...formData } = form
+    const forms = await Promise.all(insertPromises);
 
-      const updatedQuestions = questions.map((question) => {
+    return forms;
+  }
 
-        //Relate answer with user id
-        const { answers, ...questionData } = question;
-        const updatedAnswers = answers.map(
-          (answer) => ({
-            userId: user.id,
-            ...answer,
-          })
-        );
+  private async insertAnswers(users: User[], forms: Form[]) {
+    const seedAnswers = initialData.answers;
 
-        //update question for valid transaction
-        return {
-          ...questionData,
-          answers: updatedAnswers
-        };
-      }
-      )
-      //reconnect the questions with the form
-      return this.formsService.create({ ...formData, questions: updatedQuestions }, user);
+    for (const a of seedAnswers) {
+      const user = users[a.userIndex];
+      const form = forms[a.formIndex];
+      const question = form.questions[a.questionIndex];
+      await this.answerRepository.save({
+        responses: a.responses,
+        user,
+        question,
+      });
     }
-    )
-
-    await Promise.all(insertPromises);
-
     return true;
   }
 }

@@ -68,12 +68,12 @@ export class AuthService {
 
     const { limit = undefined, offset = 0 } = paginationDto;
 
-    const feedbacks = await this.userRepository.find({
+    const users = await this.userRepository.find({
       take: limit,
       skip: offset
     })
 
-    return feedbacks
+    return users;
   }
 
   async checkAuthStatus( user: User ){

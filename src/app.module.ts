@@ -7,8 +7,8 @@ import { FormsModule } from './forms/forms.module';
 import { AnswersModule } from './answers/answers.module';
 import { SeedModule } from './seed/seed.module';
 import { FeedbackModule } from './feedback/feedback.module';
-import { ReportsModule } from './reports/reports.module';
 import { FilesModule } from './files/files.module';
+import { ReportsModule } from './reports/reports.module';
 
 @Module({
   imports: [
@@ -16,12 +16,6 @@ import { FilesModule } from './files/files.module';
     ConfigModule.forRoot(),
 
     TypeOrmModule.forRoot({
-      ssl: process.env.STATE === 'prod',
-      extra: { 
-        ssl: process.env.STATE === 'prod'
-        ? {rejectUnauthorized: false}
-        : null,
-      },
 
       type: 'postgres',
       host: process.env.DB_HOST,
@@ -45,9 +39,9 @@ import { FilesModule } from './files/files.module';
     
     FeedbackModule,
     
-    ReportsModule,
+    FilesModule,
     
-    FilesModule
+    ReportsModule,
   ]
 })
 export class AppModule {}

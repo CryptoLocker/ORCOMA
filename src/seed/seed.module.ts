@@ -6,6 +6,7 @@ import { User } from 'src/auth/entities/user.entity';
 import { Form } from 'src/forms/entities';
 import { AuthModule } from 'src/auth/auth.module';
 import { FormsModule } from 'src/forms/forms.module';
+import { AnswersModule } from 'src/answers/answers.module';
 
 @Module({
   controllers: [SeedController],
@@ -15,7 +16,8 @@ import { FormsModule } from 'src/forms/forms.module';
   imports: [
     TypeOrmModule.forFeature([User, Form]),
     AuthModule,
-    FormsModule
+    FormsModule,
+    AnswersModule
   ]
 })
 export class SeedModule {}

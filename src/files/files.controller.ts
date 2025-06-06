@@ -8,7 +8,7 @@ import { CreateFormVideoDto } from 'src/forms/dto'
 import { ApiBody, ApiOperation, ApiParam, ApiResponse } from '@nestjs/swagger'
 
 @Controller('files')
-@Auth(ValidRoles.admin, ValidRoles.superUser)
+@Auth(ValidRoles.admin)
 export class FilesController {
   constructor(private readonly filesService: FilesService) { }
 

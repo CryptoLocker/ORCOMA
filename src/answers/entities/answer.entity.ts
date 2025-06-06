@@ -1,6 +1,7 @@
-import {Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
+import {Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, JoinColumn} from "typeorm";
 import { ApiProperty } from '@nestjs/swagger';
 import { FormQuestion } from "src/forms/entities";
+import { User } from "src/auth/entities/user.entity";
 
 @Entity()
 export class Answer {
@@ -22,11 +23,12 @@ export class Answer {
     responses: string[]
 
     @ApiProperty({
-        description: 'UUID of the user who provided the answer',
-        example: '123e4567-e89b-12d3-a456-426614174000'
+        description: 'User who provided the answer',
+        type: () => User
     })
-    @Column('uuid')
-    userId: string
+    @ManyToOne(() => User)
+    @JoinColumn({ name: 'userId' })
+    user: User;
 
     @ApiProperty({
         description: 'Timestamp when the answer was submitted',
@@ -47,4 +49,3 @@ export class Answer {
     question: FormQuestion
 
 }
-

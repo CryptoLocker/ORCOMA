@@ -14,7 +14,7 @@ export class FormsController {
   constructor(private readonly formsService: FormsService) {}
 
   @Post()
-  @Auth(ValidRoles.admin, ValidRoles.superUser)
+  @Auth(ValidRoles.admin)
 
   @ApiOperation({ summary: 'Create a new form' })
   @ApiResponse({ status: 201, description: 'Form successfully created' })
@@ -32,8 +32,6 @@ export class FormsController {
 
   @ApiOperation({ summary: 'Get all forms' })
   @ApiResponse({ status: 200, description: 'List of forms', type: [CreateFormDto] })
-  @ApiQuery({ name: 'page', required: false, type: Number, description: 'Page number for pagination' })
-  @ApiQuery({ name: 'limit', required: false, type: Number, description: 'Number of results per page' })
 
   findAll(@Query() paginationDto: PaginationDto) {
     return this.formsService.findAll(paginationDto);
@@ -51,7 +49,7 @@ export class FormsController {
   }
 
   @Patch(':id')
-  @Auth(ValidRoles.admin, ValidRoles.superUser)
+  @Auth(ValidRoles.admin)
 
   @ApiOperation({ summary: 'Update form by ID' })
   @ApiResponse({ status: 200, description: 'Form successfully updated', type: UpdateFormDto })
@@ -68,7 +66,7 @@ export class FormsController {
   }
 
   @Delete(':id')
-  @Auth(ValidRoles.admin, ValidRoles.superUser)
+  @Auth(ValidRoles.admin)
   @ApiOperation({ summary: 'Delete form by ID' })
   @ApiResponse({ status: 200, description: 'Form successfully deleted' })
   @ApiResponse({ status: 404, description: 'Form not found' })

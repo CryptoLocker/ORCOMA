@@ -14,7 +14,7 @@ export class SeedController {
   @ApiResponse({ status: 200, description: 'Database seeded successfully' })
   @ApiResponse({ status: 401, description: 'Unauthorized' })
   @ApiResponse({ status: 403, description: 'Forbidden - Requires admin role' })
-  //@Auth( ValidRoles.admin )
+  @Auth( ValidRoles.admin )
   executeSeed() {
     return this.seedService.runSeed()
   }

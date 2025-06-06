@@ -42,8 +42,8 @@ export class AnswersService {
 
       const answer = this.answerRepository.create({
         ...createAnswerDto,
-        question,
-        userId: user.id,
+        question: { id: questionId },
+        user: { id: user.id }
       });
 
       return this.answerRepository.save(answer);
@@ -55,9 +55,9 @@ export class AnswersService {
   async findByUserAndQuestion(userId: string, questionId: string): Promise<Answer[]> {
     return await this.answerRepository.find({
       where: {
-        userId: userId,
+        user: { id: userId },
         question: { id: questionId }
-      }
+      } 
     });
   }
 
@@ -70,7 +70,7 @@ export class AnswersService {
 
   async findByUserId(userId: string) {
     return await this.answerRepository.find({
-      where: { userId },
+      where: { user: { id: userId} },
     });
   }
 
@@ -94,12 +94,12 @@ export class AnswersService {
   }
 
   async remove(id: string) {
-    const form = await this.findOne(id);
-    await this.answerRepository.remove(form);
+    const answer = await this.findOne(id);
+    await this.answerRepository.remove(answer);
   }
 
   async removeAll() {
-    const query = this.answerRepository.createQueryBuilder('form');
+    const query = this.answerRepository.createQueryBuilder('answer');
 
     try {
       return await query
